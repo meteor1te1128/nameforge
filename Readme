@@ -1,0 +1,108 @@
+# NameCraft — AI Name Generator
+
+> Beautiful names with real meaning. Powered by Claude AI.
+
+Live demo target: `https://yourusername.github.io/nameforge`
+
+---
+
+## Deploy in 5 minutes
+
+### 1. Create the GitHub repo
+
+- Name: `nameforge` (or anything you want)
+- Visibility: **Public** (required for free GitHub Pages)
+- Leave README / .gitignore / license all off
+- Click **Create repository**
+
+### 2. Upload files
+
+Upload these files preserving the folder structure:
+
+```
+nameforge/
+├── index.html
+├── css/
+│   └── style.css
+└── js/
+    └── main.js
+```
+
+### 3. Enable GitHub Pages
+
+Go to your repo → **Settings** → **Pages** → Source: `main` branch → **Save**
+
+Wait ~60 seconds. Your site is live.
+
+---
+
+## Configuration (3 things to change)
+
+### API Key — `js/main.js` line 9
+
+```js
+const API_KEY = 'YOUR_ANTHROPIC_API_KEY';
+```
+
+Get your key at [console.anthropic.com](https://console.anthropic.com). New accounts get free credits.
+
+> ⚠️ **Security note:** Putting an API key in frontend JS is fine for testing. For real traffic, proxy it through a [Cloudflare Worker](https://developers.cloudflare.com/workers/) (free tier is generous).
+
+### Payment email — `index.html`
+
+Search for `hello@namecraft.io` and replace with your PayPal / Venmo address. It appears in 2 places.
+
+### Price (optional) — `index.html`
+
+Search `$7.99` and `$24.99` to change pricing. The psychology: anchor high ($24.99 crossed out), sell low ($7.99). Sweet spot for impulse buys.
+
+---
+
+## How the monetization works
+
+| Stage | What happens |
+|---|---|
+| **Free hook** | User gets 3 names — enough to get excited, not enough to stop |
+| **Sunk cost** | They've already typed their preferences. Leaving feels wasteful |
+| **Anchor pricing** | $24.99 crossed out → $7.99 feels like a steal |
+| **Risk reversal** | 7-day money-back removes the last objection |
+| **Manual fulfillment** | They email payment screenshot → you send PDF within 5 min |
+
+**Target:** 5 sales/day × $7.99 = ~$1,450/month on autopilot
+
+---
+
+## The PDF report (what you're selling)
+
+When someone pays, generate their full report using the Claude API with a longer prompt requesting 10 names + deep analysis. Format it in Canva, Google Docs, or Notion and export as PDF. Template takes ~15 min to build, then each report takes ~3 min to send.
+
+Or automate it: use Make (formerly Integromat) to trigger on payment confirmation email → call Claude API → generate PDF → email it back. Zero manual work.
+
+---
+
+## Traffic / marketing
+
+The fastest channels for this niche:
+
+| Channel | Tactic |
+|---|---|
+| **Reddit** | Post to r/namenerds, r/Dognames, r/startups — genuine answers, mention the tool |
+| **Pinterest** | Pin aesthetic name cards. Baby/pet name content gets enormous organic traffic |
+| **TikTok** | "I used AI to generate a name for my daughter" — 30s screen recording, no face needed |
+| **Facebook Groups** | Baby name groups have hundreds of thousands of members |
+| **Product Hunt** | Launch on a Tuesday morning for maximum upvotes |
+
+---
+
+## Upgrade path (scale to $5k/month)
+
+1. **Stripe integration** — replace manual PayPal with [Stripe Payment Links](https://stripe.com/payment-links). No code needed.
+2. **Webhook automation** — on successful payment, auto-generate PDF and email it using [Resend](https://resend.com) + Claude API.
+3. **Upsell** — add a $19 "Astrology compatibility" add-on after purchase.
+4. **SEO content** — build `/names/girl/celtic`, `/names/boy/nordic` pages. Baby name SEO traffic is enormous.
+
+---
+
+## License
+
+MIT — do whatever you want with it.
