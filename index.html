@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NameForge · AI智能命名大师</title>
+  <meta name="description" content="用AI为你的宝宝、宠物或品牌生成独特、有深意的名字，附带完整文化解析报告。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- 背景装饰 -->
+  <div class="bg-decor">
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+    <div class="circle c3"></div>
+  </div>
+
+  <!-- 顶部导航 -->
+  <header>
+    <div class="logo">名 <span>锻</span></div>
+    <nav>
+      <a href="#how">如何使用</a>
+      <a href="#pricing">定价</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="badge">✦ AI 驱动 · 文化深度解析</div>
+    <h1>为你最珍贵的<br/><em>一切</em>，找到完美之名</h1>
+    <p class="sub">融合五行、诗经、现代语义学，30秒生成有灵魂的名字<br/>已帮助 <strong>12,400+</strong> 家庭找到心仪之名</p>
+    <a href="#generator" class="cta-btn">立即免费体验 →</a>
+    <div class="social-proof">
+      <span>⭐⭐⭐⭐⭐</span>
+      <span>"给女儿取名用的，婆婆看了直说好！"</span>
+    </div>
+  </section>
+
+  <!-- 生成器 -->
+  <section class="generator" id="generator">
+    <div class="gen-card">
+      <h2>开始命名</h2>
+
+      <!-- 类型选择 -->
+      <div class="type-selector">
+        <button class="type-btn active" data-type="baby">👶 宝宝</button>
+        <button class="type-btn" data-type="pet">🐾 宠物</button>
+        <button class="type-btn" data-type="brand">✦ 品牌</button>
+      </div>
+
+      <!-- 表单 -->
+      <div class="form-grid">
+        <div class="field" id="field-surname">
+          <label>姓氏（可选）</label>
+          <input type="text" id="surname" placeholder="如：李、王、张" maxlength="2" />
+        </div>
+        <div class="field" id="field-gender">
+          <label>性别</label>
+          <div class="radio-group">
+            <label class="radio-label"><input type="radio" name="gender" value="男" checked /> 男</label>
+            <label class="radio-label"><input type="radio" name="gender" value="女" /> 女</label>
+            <label class="radio-label"><input type="radio" name="gender" value="中性" /> 中性</label>
+          </div>
+        </div>
+        <div class="field full">
+          <label>期望寓意 / 风格关键词</label>
+          <input type="text" id="keywords" placeholder="如：温柔有力、事业有成、诗意清雅、阳光活泼" />
+        </div>
+        <div class="field full" id="field-extra">
+          <label>额外要求（可选）</label>
+          <input type="text" id="extra" placeholder="如：不要太古风、要好写、读音响亮" />
+        </div>
+      </div>
+
+      <button class="gen-btn" id="generateBtn" onclick="generateNames()">
+        <span class="btn-text">✦ 免费生成3个名字</span>
+        <span class="btn-loader" style="display:none">生成中...</span>
+      </button>
+
+      <!-- 结果区 -->
+      <div class="results" id="results" style="display:none">
+        <div class="results-header">
+          <h3>为你推荐</h3>
+          <span class="free-badge">免费版 · 3个</span>
+        </div>
+        <div class="names-grid" id="namesGrid"></div>
+
+        <!-- 付费解锁区 -->
+        <div class="upsell-card" id="upsellCard">
+          <div class="upsell-lock">🔒</div>
+          <h4>解锁完整命名报告</h4>
+          <p>还有 <strong>7个精选名字</strong> + 每个名字的深度解析</p>
+          <ul class="upsell-features">
+            <li>✓ 五行八字匹配分析</li>
+            <li>✓ 诗经/楚辞出处溯源</li>
+            <li>✓ 声调搭配与读音评分</li>
+            <li>✓ 字形笔画吉凶分析</li>
+            <li>✓ PDF报告一键下载</li>
+          </ul>
+          <div class="price-row">
+            <span class="price-old">¥49</span>
+            <span class="price-new">¥19.9</span>
+            <span class="price-tag">限时特惠</span>
+          </div>
+          <button class="pay-btn" onclick="openPayment()">解锁完整报告 →</button>
+          <p class="guarantee">✓ 7天不满意全额退款 · 微信/支付宝支付</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 如何使用 -->
+  <section class="how" id="how">
+    <h2>三步，找到心仪之名</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>填写偏好</h4>
+        <p>告诉我们姓氏、性别和你对名字的期望，10秒即可完成</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>AI深度生成</h4>
+        <p>融合文化数据库与语义模型，为你专属生成有内涵的名字</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>获取完整报告</h4>
+        <p>解锁后得到10个精选名字与详细解析，下载PDF永久保存</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 评价 -->
+  <section class="reviews">
+    <h2>用户真实评价</h2>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>"原本不信AI能取名，试了才发现真的有文化底蕴，给儿子取了'承泽'，老人家超喜欢。"</p>
+        <div class="reviewer">— 王女士，上海</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>"给新开的奶茶店取名，出了好几个很有意境的，最后用了'云间饮'，顾客都说好听。"</p>
+        <div class="reviewer">— 陈老板，成都</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>"19.9买了报告，里面的诗经出处和五行分析非常详细，比找人算命便宜多了！"</p>
+        <div class="reviewer">— 李先生，广州</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 定价 -->
+  <section class="pricing" id="pricing">
+    <h2>简单透明的定价</h2>
+    <div class="price-cards">
+      <div class="price-card">
+        <div class="plan-name">免费体验</div>
+        <div class="plan-price">¥0</div>
+        <ul>
+          <li>✓ 3个AI生成名字</li>
+          <li>✓ 简短寓意介绍</li>
+          <li>✗ 深度文化解析</li>
+          <li>✗ PDF报告下载</li>
+        </ul>
+        <button onclick="document.getElementById('generator').scrollIntoView({behavior:'smooth'})">免费开始</button>
+      </div>
+      <div class="price-card featured">
+        <div class="plan-badge">最受欢迎</div>
+        <div class="plan-name">完整报告</div>
+        <div class="plan-price">¥19.9 <s>¥49</s></div>
+        <ul>
+          <li>✓ 10个精选名字</li>
+          <li>✓ 五行八字匹配</li>
+          <li>✓ 诗经出处溯源</li>
+          <li>✓ 声调笔画分析</li>
+          <li>✓ PDF报告下载</li>
+          <li>✓ 7天退款保证</li>
+        </ul>
+        <button onclick="openPayment()">立即解锁</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 支付弹窗 -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal()" style="display:none">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <h3>解锁完整命名报告</h3>
+      <div class="modal-price">¥19.9 <span>限时特惠</span></div>
+      <div class="qr-placeholder">
+        <div class="qr-box">
+          <!-- 实际部署时替换为真实收款二维码图片 -->
+          <div class="qr-mock">
+            <div class="qr-inner">扫码支付</div>
+            <p>微信 / 支付宝</p>
+          </div>
+        </div>
+        <div class="qr-steps">
+          <p>① 扫描二维码支付 ¥19.9</p>
+          <p>② 支付后截图发送至下方邮箱</p>
+          <p>③ 5分钟内收到完整PDF报告</p>
+          <p class="email-contact">📧 your@email.com</p>
+        </div>
+      </div>
+      <p class="modal-guarantee">✓ 7天不满意全额退款，无需理由</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="logo">名 <span>锻</span></div>
+    <p>© 2025 NameForge · 用AI传承文化之美</p>
+    <p><a href="mailto:your@email.com">联系我们</a> · <a href="#">隐私政策</a></p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
